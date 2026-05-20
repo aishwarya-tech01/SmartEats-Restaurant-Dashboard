@@ -40,3 +40,4 @@ To boot up this localized operational environment, execute these commands in you
 2. Initialize the Python environment extensions package:
    ```bash
    pip install streamlit pandas plotly
+   ''
