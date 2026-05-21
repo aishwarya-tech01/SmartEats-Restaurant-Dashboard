@@ -218,14 +218,14 @@ with tab_kitchen:
                         st.rerun()
 
 # ==========================================
-# 📊 3. MANAGER CONTROL SIDE BLINKING RADAR
+# 📊 3. MANAGER CONTROL SIDE - PROFESSIONAL SLA MONITOR
 # ==========================================
 with tab_manager:
     if st.session_state.active_interface != "manager":
-        speak_ui_action("Manager command dashboard active. Operational diagnostics running.")
+        speak_ui_action("Manager operational intelligence matrix active. SLA diagnostics running.")
         st.session_state.active_interface = "manager"
         
-    st.subheader("Live Kitchen Grid Distribution Status")
+    st.subheader("Live Kitchen Service Level Agreement (SLA) Monitor")
     
     conn = get_db_connection()
     load_query = """
@@ -238,24 +238,24 @@ with tab_manager:
     df_workload = pd.read_sql_query(load_query, conn)
     conn.close()
 
-    st.markdown("#### 🚨 Real-Time Safety Workload Boundary Verification")
+    st.markdown("#### ⏳ Real-Time Order Delivery Target Verification")
     if df_workload.empty:
-        st.success("✅ Station parameters safe. Workload is evenly balanced across all channels.")
+        st.success("✅ Operational thresholds optimal. All delivery time targets are currently being met.")
     else:
         imbalance_found = False
         for _, row in df_workload.iterrows():
-            # OVERHEAT THRESHOLD TRIPPED: If 5 or more items are cooking, fire the emergency layout ecosystem
+            # If 5 or more items are cooking, trigger the professional SLA Breach Alert
             if row['total_active_cooking'] >= 5:
                 imbalance_found = True
                 
-                # 1. Render the flashing, glowing red danger box block on screen
-                st.markdown(f'<div class="blinking-alert-banner">🚨 OPERATIONAL EMERGENCY: THE {row["category"].upper()} HAS OVERLOADED WITH {row["total_active_cooking"]} REQ ENTRIES ACTIVE!</div>', unsafe_allow_html=True)
+                # 1. Professional Flashing SLA Warning Banner
+                st.markdown(f'<div class="blinking-alert-banner">⚠️ CRITICAL PERFORMANCE WARNING: THE {row["category"].upper()} LINE HAS BREACHED MAX CAPACITY LIMITS ({row["total_active_cooking"]} ORDERS DELAYED)</div>', unsafe_allow_html=True)
                 
-                # 2. Fire the native high-pitched electronic double-beep alarm siren
+                # 2. Fire the native high-pitched electronic warning notification tone
                 trigger_browser_siren()
                 
-                # 3. Use text-to-speech to deliver the urgent management alert notice out loud
-                speak_ui_action(f"Alert! Attention manager, critical structural bottleneck detected at the {row['category']}. Reallocate cooking staff immediately.")
+                # 3. Professional Technical Audio Announcement
+                speak_ui_action(f"Operational warning. Order delivery targets are breaching parameters at the {row['category']}. Reallocate labor resources immediately.")
                 
         if not imbalance_found:
-            st.success("✅ Operational thresholds checked. Kitchen queues are processing safely within normal parameters.")
+            st.success("✅ Performance metrics green. Kitchen queues are processing well within standard delivery timelines.")
