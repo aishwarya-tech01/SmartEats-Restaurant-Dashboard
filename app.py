@@ -217,16 +217,13 @@ with tab_kitchen:
                         speak_ui_action(f"Ticket number {row['order_id']} marked as complete and served.")
                         st.rerun()
 
-# ==========================================
-# 📊 3. MANAGER CONTROL SIDE - PROFESSIONAL SLA MONITOR
-# ==========================================
+# ====================================================================
+# 📊 3. MANAGER CONTROL SIDE - PROFESSIONAL SLA MONITOR (AUTO-TRIGGER)
+# ====================================================================
 with tab_manager:
-    if st.session_state.active_interface != "manager":
-        speak_ui_action("Manager operational intelligence matrix active. SLA diagnostics running.")
-        st.session_state.active_interface = "manager"
-        
     st.subheader("Live Kitchen Service Level Agreement (SLA) Monitor")
     
+    # FORCED DATA SYNC: Read fresh database values instantly upon tab focus
     conn = get_db_connection()
     load_query = """
         SELECT m.category, SUM(oi.quantity) as total_active_cooking
@@ -239,23 +236,32 @@ with tab_manager:
     conn.close()
 
     st.markdown("#### ⏳ Real-Time Order Delivery Target Verification")
+    
     if df_workload.empty:
         st.success("✅ Operational thresholds optimal. All delivery time targets are currently being met.")
     else:
         imbalance_found = False
         for _, row in df_workload.iterrows():
-            # If 5 or more items are cooking, trigger the professional SLA Breach Alert
+            # If 5 or more items are cooking, fire the emergency layout ecosystem immediately
             if row['total_active_cooking'] >= 5:
                 imbalance_found = True
                 
-                # 1. Professional Flashing SLA Warning Banner
+                # 1. Output the animated flashing HTML container box
                 st.markdown(f'<div class="blinking-alert-banner">⚠️ CRITICAL PERFORMANCE WARNING: THE {row["category"].upper()} LINE HAS BREACHED MAX CAPACITY LIMITS ({row["total_active_cooking"]} ORDERS DELAYED)</div>', unsafe_allow_html=True)
                 
-                # 2. Fire the native high-pitched electronic warning notification tone
+                # 2. Fire the native high-pitched electronic double-beep alarm siren
                 trigger_browser_siren()
                 
-                # 3. Professional Technical Audio Announcement
+                # 3. Use text-to-speech to deliver the urgent management alert notice out loud
                 speak_ui_action(f"Operational warning. Order delivery targets are breaching parameters at the {row['category']}. Reallocate labor resources immediately.")
                 
         if not imbalance_found:
-            st.success("✅ Performance metrics green. Kitchen queues are processing well within standard delivery timelines.")
+            st.success("✅ Performance metrics green. Kitchen queues are processing safely within normal parameters.")
+
+    st.write("---")
+    st.markdown("#### **Active Station Loads Visualization**")
+    if not df_workload.empty:
+        fig = px.bar(df_workload, x='category', y='total_active_cooking', 
+                     labels={'total_active_cooking': 'Active Items on Grills/Stoves', 'category': 'Kitchen Stations'},
+                     title="Real-Time Grid Load Metric Matrix", color='total_active_cooking', color_continuous_scale="Oranges")
+        st.plotly_chart(fig, use_container_width=True)
