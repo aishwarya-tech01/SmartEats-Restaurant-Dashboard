@@ -217,9 +217,9 @@ with tab_kitchen:
                         speak_ui_action(f"Ticket number {row['order_id']} marked as complete and served.")
                         st.rerun()
 
-# ====================================================================
-# 📊 3. MANAGER CONTROL SIDE - PROFESSIONAL SLA MONITOR (AUTO-TRIGGER)
-# ====================================================================
+# ==========================================
+# 📊 3. MANAGER CONTROL SIDE - PROFESSIONAL SLA MONITOR (SOUND ACTIVATOR)
+# ==========================================
 with tab_manager:
     st.subheader("Live Kitchen Service Level Agreement (SLA) Monitor")
     
@@ -235,6 +235,13 @@ with tab_manager:
     df_workload = pd.read_sql_query(load_query, conn)
     conn.close()
 
+    # AUDIO INITIALIZER BUTTON: This forces the browser to grant full sound permissions!
+    st.markdown("#### 🔊 Audio Engine Activation")
+    if st.button("⚠️ Click to Unmute & Initialize Live System Alarms", type="primary"):
+        speak_ui_action("Audio tracking synchronized successfully.")
+        trigger_browser_siren()
+
+    st.write("---")
     st.markdown("#### ⏳ Real-Time Order Delivery Target Verification")
     
     if df_workload.empty:
@@ -260,8 +267,11 @@ with tab_manager:
 
     st.write("---")
     st.markdown("#### **Active Station Loads Visualization**")
+    
     if not df_workload.empty:
         fig = px.bar(df_workload, x='category', y='total_active_cooking', 
                      labels={'total_active_cooking': 'Active Items on Grills/Stoves', 'category': 'Kitchen Stations'},
                      title="Real-Time Grid Load Metric Matrix", color='total_active_cooking', color_continuous_scale="Oranges")
         st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.info("No active operations to chart. Place orders and mark them as cooking to view visual metrics.")
