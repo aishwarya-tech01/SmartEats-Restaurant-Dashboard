@@ -17,11 +17,11 @@ A modern, full-stack data application that transforms traditional restaurant man
 ---
 
 ## 🛠️ The System Tech Stack
-* **UI Framework:** Streamlit (Web-Based GUI Micro-Framework)
-* **Application Core:** Python 3 (Object-Oriented Logic Engine)
-* **Data Management Layer:** SQLite3 (Embedded Relational Database Setup)
-* **Data Pipelines & Manipulation:** Pandas Core Dataframes
-* **Analytical Graphics Rendering:** Plotly Express (Vector Data Visualization)
+* **UI Framework:** Streamlit (Web-Based GUI Micro-Framework).
+* **Application Core:** Python 3 (Object-Oriented Logic Engine).
+* **Data Management Layer:** SQLite3 (Embedded Relational Database Setup).
+* **Data Pipelines & Manipulation:** Pandas Core Dataframes.
+* **Analytical Graphics Rendering:** Plotly Express (Vector Data Visualization).
 
 ---
 
