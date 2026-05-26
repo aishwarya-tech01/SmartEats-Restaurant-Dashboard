@@ -2,7 +2,7 @@
 
 A modern, full-stack data application that transforms traditional restaurant management into a data-driven ecosystem. This application bridges a consumer-facing digital interface with a real-time business intelligence operational control unit.
 
----
+----
 
 ## 🚀 Future-Proof Core Engineering Features
 
@@ -14,7 +14,7 @@ A modern, full-stack data application that transforms traditional restaurant man
 * **The Problem:** Restaurants lose out on profit margins during massive high-demand rush hours, while failing to move expiring stock during slow afternoons.
 * **The Solution:** Programmed a dynamic pricing algorithm into the data injection tier. The system tracks current active table numbers and available ingredient volumes to automatically calculate and apply micro-price adjustments in real time, optimizing corporate revenue models dynamically.
 
----
+----
 
 ## 🛠️ The System Tech Stack
 * **UI Framework:** Streamlit (Web-Based GUI Micro-Framework).
@@ -23,7 +23,7 @@ A modern, full-stack data application that transforms traditional restaurant man
 * **Data Pipelines & Manipulation:** Pandas Core Dataframes.
 * **Analytical Graphics Rendering:** Plotly Express (Vector Data Visualization).
 
----
+----
 
 ## 💾 Relational Database Schema Design
 The backend relies on an optimized, normalized three-tier architecture to maintain 100% data integrity:
@@ -31,7 +31,7 @@ The backend relies on an optimized, normalized three-tier architecture to mainta
 2. `orders`: Tracks unique transaction numbers, table identities, chronological timestamps, and active workflow states (`Pending`, `Cooking`, `Completed`).
 3. `order_items`: A relational junction map linking specific item configurations and volume metrics to parent transactional records (One-to-Many entity grouping).
 
----
+----
 
 ## 🏁 Step-by-Step Installation & Quickstart
 To boot up this localized operational environment, execute these commands in your host terminal:
