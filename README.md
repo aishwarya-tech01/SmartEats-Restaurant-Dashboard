@@ -1,6 +1,6 @@
 # 🍳 SmartEats: Next-Gen Digital Menu & Predictive Kitchen Operations Dashboard
 
-A modern, full-stack data application that transforms traditional restaurant management into a data-driven ecosystem. This application bridges a consumer-facing digital interface with a real-time business intelligence operational control unit.
+A modern, full-stack data application that transforms traditional restaurant management into a data-driven ecosystem. This application bridges a consumer-facing digital interface with a real-time business intelligence operational control unit
 
 ----
 
@@ -8,7 +8,7 @@ A modern, full-stack data application that transforms traditional restaurant man
 
 ### 1. ⚡ Dynamic Station Workload Balancer (Live Bottleneck Radar)
 * **The Problem:** Standard kitchen apps list orders in a basic queue, which leaves kitchen managers blind to sector overload until orders are already running late.
-* **The Solution:** Built an active tracking module that calculates rolling cooking loads across specific preparation stations (Grill, Fryer, Pizza Oven). If parallel orders in a single category breach a strict operational threshold, the backend runs an outlier check and fires a high-visibility alert to rearrange resources before delivery delays ripple to clients.
+* **The Solution:** Built an active tracking module that calculates rolling cooking loads across specific preparation stations (Grill, Fryer, Pizza Oven). If parallel orders in a single category breach a strict operational threshold, the backend runs an outlier check and fires a high-visibility alert to rearrange resources before delivery delays ripple to clients
 
 ### 2. 📈 Algorithmic Dynamic Surge-Pricing Matrix
 * **The Problem:** Restaurants lose out on profit margins during massive high-demand rush hours, while failing to move expiring stock during slow afternoons.
